@@ -1,5 +1,3 @@
-require "npr_news/version"
+require_relative "npr_news/version"
+require_relative "npr_news/cli.rb"
 
-module NprNews
-  # Your code goes here...
-end
