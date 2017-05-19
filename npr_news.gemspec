@@ -5,8 +5,8 @@ require 'npr_news/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "npr_news"
-  spec.version       = NprNews::VERSION
-  spec.authors       = ["'jessica fletcher'"]
+  spec.version       = NPRNews::VERSION
+  spec.authors       = ["'Cara Kane'"]
   spec.email         = ["'cara.kane@gmail.com'"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
@@ -32,4 +32,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry"
+
+  spec.add_dependency "nokogiri"
+
 end
