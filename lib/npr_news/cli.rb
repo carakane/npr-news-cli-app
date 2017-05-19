@@ -4,6 +4,8 @@ class NPRNews::CLI
     welcome
     divisions
     division_choice
+    #more
+    #goodbye
   end
 
   def welcome
@@ -13,24 +15,59 @@ class NPRNews::CLI
 
   def divisions
     #iterates over the news divisions and puts them/or hard coded?/or scraped titles?
-    puts "Please choose one of the news divisions by number:"
+    puts "Please choose one of the news divisions by number, or type exit:"
     puts "1. U.S."
     puts "2. World"
   end
 
   def division_choice
-    input = gets.strip
-    if input == "1"
-      puts "US Headlines"
-    elsif input == "2"
-      puts "World Headlines"
-    elsif input == "exit"
-      puts "Goodbye!"
+    input = nil
+    while input != "exit"
+      input = gets.strip
+      case input
+        when "1"
+          headlines
+        when "2"
+          headlines
+      #not quite right. user has to choose division, then that choice has to be used to scrape headlines.
+      #possible that headlines method could stay the same regardless of division, since pages appear
+      #to be coded identically on first glance. this means that division_choice bears the responsibility
+      #of sending correct division website to headlines, so headlines probably will take in an argument
+      #of the division
+      end
     end
   end
 
   def headlines
     #scrape headlines?
+    puts "1. Headline 1"
+    puts "Snippet of story"
+    puts "URL"
+    puts "2. Headline 2"
+    puts "Snippet of story"
+    puts "URL"
+    puts "3. Headline 3"
+    puts "Snippet of story"
+    puts "URL"
+    more
+  end
+
+  def more
+    puts "Type list to view the news divisions again, or type exit."
+    #input = nil
+    input = gets.strip
+
+    if input == "exit"
+      goodbye
+    elsif input == "list"
+      divisions
+    else more
+    end
+  end
+
+  def goodbye
+    puts "Come back later for more headlines!"
+    exit
   end
 
 end
