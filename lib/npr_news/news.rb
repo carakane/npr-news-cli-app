@@ -18,6 +18,8 @@ class NPRNews::News
     headline_2.title = "2nd Test Title"
     headline_2.snippet = "2nd Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     headline_2.url = "http://www.npr.org/sections/health-shots/2017/05/19/528516985/poll-doctors-are-still-prescribing-lots-of-opioids-for-low-back-pain"
+
+    [headline_1, headline_2]
   end
 
 end
