@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-require "../lib/npr_news"
+#require "bundler-setup"
+require_relative "../lib/npr_news"
+
 
 NPRNews::CLI.new.call
