@@ -40,15 +40,10 @@ class NPRNews::CLI
 
   def headlines
     #scrape headlines?
-    puts "1. Headline 1"
-    puts "Snippet of story"
-    puts "URL"
-    puts "2. Headline 2"
-    puts "Snippet of story"
-    puts "URL"
-    puts "3. Headline 3"
-    puts "Snippet of story"
-    puts "URL"
+    @headlines = NPRNews::News.headlines
+    @headlines.each.with_index(1) do |headline, i|
+      puts "#{i}. #{headline.title}\n #{headline.snippet}\n #{headline.url}"
+    end
     more
   end
 
