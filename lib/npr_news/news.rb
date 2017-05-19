@@ -1,0 +1,5 @@
+class NPRNews::News
+
+
+
+end
