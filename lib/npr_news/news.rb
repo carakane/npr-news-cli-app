@@ -22,4 +22,23 @@ class NPRNews::News
     [headline_1, headline_2]
   end
 
+  def self.headline_scrape(division_url)
+    division_url = "http://www.npr.org/sections/us/"
+    doc = Nokogiri::HTML(open(division_url))
+    #binding.pry
+    articles = {}
+    doc.css("featured").each do |article|
+      articles << {
+      articles[:title] => doc.css("article h2").text
+      articles[:url] => doc.css("article h2 a").attribute("href").value
+      articles[:snippet] => doc.css("article p.teaser a").text.gsub(/(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s+\d{1,2},\s+\d{4}\s.{7}/,"")
+    }
+    end
+    articles
+      #featured
+    #title doc.css("article h2").first.text
+    #url doc.css("article h2 a").first.attribute("href").value
+    #snippet doc.css("article p.teaser a").first.text.gsub(/(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s+\d{1,2},\s+\d{4}\s.{7}/,"")
+  end
+
 end
