@@ -3,6 +3,8 @@ class NPRNews::News
   # current thinking is that maybe divisions should be hard coded.
 
   @@divisions = []
+  @@headlines = []
+
   def self.division
     #should return division instances, divisions have names
     doc = Nokogiri::HTML(open("http://www.npr.org/sections/news/"))
@@ -14,7 +16,6 @@ class NPRNews::News
     division.url = "http://www.npr.org#{div.css("a").attribute("href").value}"
     @@divisions << division
   end
-  # binding.pry
   @@divisions
   end
 
@@ -35,19 +36,21 @@ class NPRNews::News
   end
 
   def self.headline_scrape(division_url)
-    #division_url = "http://www.npr.org/sections/us/"
+    division_url = "http://www.npr.org/sections/us/"
     doc = Nokogiri::HTML(open(division_url))
-    articles = []
+  #  articles = []
     doc.css("article.item.has-image").each do |article| #div.featured # article.item.has-image
       #articles << {
       headline = self.new
-      headline.title = article.css("article h2.title").text,
-      headline.url = "test",#article.css("article h2 a").attribute("href").value,
-      headline.snippet = article.css("article p.teaser a").text.gsub(/(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s+\d{1,2},\s+\d{4}\s/,"") #.{7}
-      articles << headline
+      headline.title = article.css("div.item-info h2 a").text,
+      # headline.title = article.css("div.item-image div.imagewrap a img").attribute("alt").text,
+      headline.url = article.css("div.item-info h2 a").attribute("href").value,
+      headline.snippet = article.css("div.item-info p.teaser a").text.gsub(/(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s+\d{1,2},\s+\d{4}\s/,"") #.{7}
+      #binding.pry
+      @@headlines << headline
     #}
     end
-    articles
+    @@headlines
       #featured
     #title doc.css("article h2").first.text
     #url doc.css("article h2 a").first.attribute("href").value
