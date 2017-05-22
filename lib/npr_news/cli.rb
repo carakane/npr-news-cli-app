@@ -12,24 +12,24 @@ class NPRNews::CLI
   end
 
   def divisions
-    puts "Please choose one of the news divisions by number, or type exit:"
     @divisions = NPRNews::Divisions.division
-    @divisions.each.with_index(1) do |division, i|
-      puts "#{i}. #{division.name}"
-    end
+    divisions_display
   end
 
-  def divisions_again
-    puts "Please choose one of the news divisions by number, or type exit:"
+  def divisions_display
     @divisions.each.with_index(1) do |division, i|
       puts "#{i}. #{division.name}"
     end
   end
 
   def division_choice
-    input = nil
-    while input != "exit"
-      input = gets.strip
+    puts "Please choose one of the news divisions by number, or type exit:"
+    input = gets.strip
+    if input == "exit"
+        goodbye
+    elsif !((1..@divisions.count).include?(input.to_i))
+      division_choice
+    else
       @divisions.each.with_index do |division, i|
         case input
           when  "#{i+1}"
@@ -37,7 +37,6 @@ class NPRNews::CLI
           end
         end
       end
-    goodbye
   end
 
   def headlines(division_url)
@@ -58,7 +57,7 @@ class NPRNews::CLI
     if input == "exit"
       goodbye
     elsif input == "list"
-      divisions_again
+      divisions_display
       division_choice
     else more
     end
