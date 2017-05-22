@@ -4,8 +4,6 @@ class NPRNews::CLI
     welcome
     divisions
     division_choice
-    #more
-    #goodbye
   end
 
   def welcome

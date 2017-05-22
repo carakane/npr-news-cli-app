@@ -4,7 +4,6 @@ class NPRNews::Divisions
   @@divisions = []
 
   def self.division
-    #should return division instances, divisions have names
     doc = Nokogiri::HTML(open("http://www.npr.org/sections/news/"))
 
     doc.css("div.subtopics li").each do|div|
