@@ -32,27 +32,14 @@ class NPRNews::CLI
     input = nil
     while input != "exit"
       input = gets.strip
-      case input
-        when "1"
-          headlines(@divisions[0].url)
-        when "2"
-          headlines(@divisions[1].url)
-        when "3"
-          headlines(@divisions[2].url)
-        when "4"
-          headlines(@divisions[3].url)
-        when "5"
-          headlines(@divisions[4].url)
-        when "6"
-          headlines(@divisions[5].url)
-        when "7"
-          headlines(@divisions[6].url)
-        when "8"
-          headlines(@divisions[7].url)
-        when "9"
-          headlines(@divisions[8].url)
+      @divisions.each.with_index do |division, i|
+        case input
+          when  "#{i+1}"
+            headlines(@divisions[i].url)
+          end
+        end
       end
-    end
+    goodbye
   end
 
   def headlines(division_url)
