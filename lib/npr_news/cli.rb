@@ -41,16 +41,12 @@ class NPRNews::CLI
   end
 
   def headlines
-    #scrape headlines?
     @headlines = NPRNews::Headlines.headlines
     @headlines.each.with_index(1) do |head, i|
       puts "#{i}. #{head.title}"
-      puts "#{head.snippet}"
-      puts "#{head.url}"
+      puts "---#{head.snippet}"
+      puts "(#{head.url})"
       puts "\n"
-      #head.each.with_index(1) do |headline, i|
-      #puts "#{i}. #{head[:title]}\n #{:snippet}\n #{:url}\n"
-#end
     end
     more
   end
