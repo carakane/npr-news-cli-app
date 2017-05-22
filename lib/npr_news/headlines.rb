@@ -2,7 +2,7 @@ class NPRNews::Headlines
   attr_accessor :title, :snippet, :url
 
   @@headlines = []
-  
+
   def self.headlines
     self.headline_scrape("http://www.npr.org/sections/us/")
   end
