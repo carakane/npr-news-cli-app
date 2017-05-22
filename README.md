@@ -1,26 +1,16 @@
-# NPRNews
+# Unofficial NPR News Headline Feed
 
-This is an unofficial NPR News feed. All content, copyright NPR.
+This provides a CLI to view current headlines from NPR News. It is not affiliated with NPR News in any way. All content, copyright NPR.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'npr_news'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install npr_news
 
 ## Usage
 
-TODO: Write usage instructions here
+After installation, type:
+
+  $ npr_news
 
 ## Development
 
