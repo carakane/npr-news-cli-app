@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Cara Kane'"]
   spec.email         = ["'cara.kane@gmail.com'"]
 
-  spec.summary       = "test"
-  spec.description   = "test"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Unofficial NPR News Feed"
+  spec.description   = "Unofficial NPR News Feed"
+  spec.homepage      = "https://github.com/carakane/npr-news-cli-app"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
     f.match(%r{^(test|spec|features)/})
   end
   spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables   = "npr_news"#spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.14"
