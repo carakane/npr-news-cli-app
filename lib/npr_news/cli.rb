@@ -10,13 +10,19 @@ class NPRNews::CLI
 
   def welcome
     puts "Welcome to an unofficial NPR News Feed"
-    puts "All content in this feed is copyright NPR News"
+    puts "All content, copyright NPR News"
   end
 
   def divisions
-    #iterates over the news divisions and puts them/or hard coded?/or scraped titles?
     puts "Please choose one of the news divisions by number, or type exit:"
     @divisions = NPRNews::Divisions.division
+    @divisions.each.with_index(1) do |division, i|
+      puts "#{i}. #{division.name}"
+    end
+  end
+
+  def divisions_again
+    puts "Please choose one of the news divisions by number, or type exit:"
     @divisions.each.with_index(1) do |division, i|
       puts "#{i}. #{division.name}"
     end
@@ -28,20 +34,29 @@ class NPRNews::CLI
       input = gets.strip
       case input
         when "1"
-          headlines
+          headlines(@divisions[0].url)
         when "2"
-          headlines
-      #not quite right. user has to choose division, then that choice has to be used to scrape headlines.
-      #possible that headlines method could stay the same regardless of division, since pages appear
-      #to be coded identically on first glance. this means that division_choice bears the responsibility
-      #of sending correct division website to headlines, so headlines probably will take in an argument
-      #of the division
+          headlines(@divisions[1].url)
+        when "3"
+          headlines(@divisions[2].url)
+        when "4"
+          headlines(@divisions[3].url)
+        when "5"
+          headlines(@divisions[4].url)
+        when "6"
+          headlines(@divisions[5].url)
+        when "7"
+          headlines(@divisions[6].url)
+        when "8"
+          headlines(@divisions[7].url)
+        when "9"
+          headlines(@divisions[8].url)
       end
     end
   end
 
-  def headlines
-    @headlines = NPRNews::Headlines.headlines
+  def headlines(division_url)
+    @headlines = NPRNews::Headlines.headlines(division_url)
     @headlines.each.with_index(1) do |head, i|
       puts "#{i}. #{head.title}"
       puts "---#{head.snippet}"
@@ -53,13 +68,13 @@ class NPRNews::CLI
 
   def more
     puts "Type list to view the news divisions again, or type exit."
-    #input = nil
     input = gets.strip
 
     if input == "exit"
       goodbye
     elsif input == "list"
-      divisions
+      divisions_again
+      division_choice
     else more
     end
   end

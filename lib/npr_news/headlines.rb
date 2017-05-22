@@ -3,8 +3,8 @@ class NPRNews::Headlines
 
   @@headlines = []
 
-  def self.headlines
-    self.headline_scrape("http://www.npr.org/sections/us/")
+  def self.headlines(division_url)
+    self.headline_scrape(division_url)
   end
 
   def self.headline_scrape(division_url)
