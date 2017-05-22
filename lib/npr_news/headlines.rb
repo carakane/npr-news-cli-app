@@ -9,7 +9,7 @@ class NPRNews::Headlines
 
   def self.headline_scrape(division_url)
     doc = Nokogiri::HTML(open(division_url))
-
+    @@headlines.clear
     doc.css("article.item.has-image").each do |article|
       headline = self.new
       headline.title = article.css("div.item-info h2 a").text
