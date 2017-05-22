@@ -16,7 +16,7 @@ class NPRNews::CLI
   def divisions
     #iterates over the news divisions and puts them/or hard coded?/or scraped titles?
     puts "Please choose one of the news divisions by number, or type exit:"
-    @divisions = NPRNews::News.division
+    @divisions = NPRNews::Divisions.division
     @divisions.each.with_index(1) do |division, i|
       puts "#{i}. #{division.name}"
     end
@@ -42,7 +42,7 @@ class NPRNews::CLI
 
   def headlines
     #scrape headlines?
-    @headlines = NPRNews::News.headlines
+    @headlines = NPRNews::Headlines.headlines
     @headlines.each.with_index(1) do |head, i|
       puts "#{i}. #{head.title}"
       puts "#{head.snippet}"
